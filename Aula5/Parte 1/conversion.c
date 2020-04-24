@@ -11,10 +11,6 @@ void delay(int ms)
 
 void ConfigureAll()
 {
-  /* I/O Configuration */
-  LATEbits.LATE0 = 0;   // RE0 MASK
-  TRISEbits.TRISE0 = 1; // RE0 = output
-
   /* ADC Configuration */
   LATBbits.LATB4 = 0;     // RB4 MASK
   TRISBbits.TRISB4 = 1;   // RB4 = input
@@ -39,7 +35,7 @@ int main(void)
 
   while(1)
   {
-    TMR5 = 0;
+    TMR5 = 0; // RESET T5
 
     AD1CON1bits.ASAM = 1;       // START Conversion
     while(IFS1bits.AD1IF == 0); // WAIT Conversion
